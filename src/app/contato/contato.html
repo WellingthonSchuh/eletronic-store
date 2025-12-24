@@ -1,0 +1,62 @@
+<h2 class="contact__title">Entre em contato</h2>
+<section class="contact__container">
+    <form class="contact-form" [formGroup]="contatoForm" (ngSubmit)="enviarFormulario()">
+        <input 
+            type="text" 
+            placeholder="Digite seu nome" 
+            formControlName="nome" 
+            [class.valid]="contatoForm.controls['nome'].valid"
+            [class.invalid]="contatoForm.controls['nome'].invalid && (contatoForm.controls['nome'].touched || contatoForm.controls['nome'].dirty)"/>
+        <div *ngIf="contatoForm.controls['nome'].invalid && (contatoForm.controls['nome'].touched || contatoForm.controls['nome'].dirty)">
+            <small class="error-message" *ngIf="contatoForm.controls['nome'].hasError('required')">Nome é obrigatório.</small>
+            <small class="error-message" *ngIf="contatoForm.controls['nome'].hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</small>
+        </div>
+        <input 
+            type="email" 
+            placeholder="Digite seu email" 
+            formControlName="email"
+            [class.valid]="contatoForm.controls['email'].valid"
+            [class.invalid]="contatoForm.controls['email'].invalid && (contatoForm.controls['email'].touched || contatoForm.controls['email'].dirty)" />
+        <div *ngIf="contatoForm.controls['email'].invalid && (contatoForm.controls['email'].touched || contatoForm.controls['email'].dirty)">
+            <small class="error-message" *ngIf="contatoForm.controls['email'].hasError('required')">Email é obrigatório.</small>
+            <small class="error-message" *ngIf="contatoForm.controls['email'].hasError('email')">Email inválido.</small>
+        </div>
+        <input 
+            type="tel" 
+            placeholder="(00) 0 0000-0000"
+            mask="(00) 0 0000-0000" 
+            formControlName="tel"
+            [class.valid]="contatoForm.controls['tel'].valid"
+            [class.invalid]="contatoForm.controls['tel'].invalid && (contatoForm.controls['tel'].touched || contatoForm.controls['tel'].dirty)" />
+            <div *ngIf="contatoForm.controls['tel'].invalid && (contatoForm.controls['tel'].touched || contatoForm.controls['tel'].dirty)">
+            <small class="error-message" *ngIf="contatoForm.controls['tel'].hasError('required')">Telefone é obrigatório.</small>
+            <small class="error-message" *ngIf="contatoForm.controls['tel'].hasError('minlength')">Telefone deve ter pelo menos 10 caracteres.</small>
+        </div>
+        <input 
+            type="text" 
+            placeholder="Assunto" 
+            formControlName="assunto"
+            [class.valid]="contatoForm.controls['assunto'].valid"
+            [class.invalid]="contatoForm.controls['assunto'].invalid && (contatoForm.controls['assunto'].touched || contatoForm.controls['assunto'].dirty)" />
+        <div *ngIf="contatoForm.controls['assunto'].invalid && (contatoForm.controls['assunto'].touched || contatoForm.controls['assunto'].dirty)">
+            <small class="error-message" *ngIf="contatoForm.controls['assunto'].hasError('required')">Assunto é obrigatório.</small>
+            <small class="error-message" *ngIf="contatoForm.controls['assunto'].hasError('minlength')">Assunto deve ter pelo menos 5 caracteres.</small>
+        </div>
+        <textarea 
+            maxlength="300" 
+            rows="4"
+            placeholder="Digite sua mensagem" 
+            formControlName="mensagem"
+            [class.valid]="contatoForm.controls['mensagem'].valid"
+            [class.invalid]="contatoForm.controls['mensagem'].invalid && (contatoForm.controls['mensagem'].touched || contatoForm.controls['mensagem'].dirty)"></textarea>
+        <div *ngIf="contatoForm.controls['mensagem'].invalid && (contatoForm.controls['mensagem'].touched || contatoForm.controls['mensagem'].dirty)">
+            <small class="error-message" *ngIf="contatoForm.controls['mensagem'].hasError('required')">Mensagem é obrigatória.</small>
+            <small class="error-message" *ngIf="contatoForm.controls['mensagem'].hasError('minlength')">Mensagem deve ter pelo menos 10 caracteres.</small>
+        </div>
+        <button [disabled]="contatoForm.invalid" type="submit">Enviar</button>
+    </form>
+    <address>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.9421080331063!2d-46.64561799999999!3d-23.5705226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59be77f8594b%3A0xf36fd363e5c6728a!2sSesc%20Avenida%20Paulista!5e0!3m2!1sen!2sbr!4v1766495613924!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>Av. Paulista, 119 - Bela Vista, São Paulo - SP, 01311-903</p>
+    </address>
+</section>
